@@ -1,0 +1,37 @@
+/* 1. Importar las tipografías desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Quicksand:wght@600&family=Tinos:wght@700&display=swap');
+
+/* 2. Variables Globales */
+:root {
+  /* Jerarquía Tipográfica */
+  --font-title: 'Tinos', serif;        /* Para <h1>, <h2> */
+  --font-subtittle: 'Quicksand', sans-serif; /* Para <h3>, <h4> o destacados */
+  --font-text: 'Nunito', sans-serif;   /* Para <p>, <span>, <a> */
+
+  /* Paleta de Colores Cálida (Ajusta los códigos hexadecimales a los tuyos) */
+  --font: #464b19;
+  --dark-green: #566138;
+  --brawn: #6c5d21;
+  --back: #fbfff3;
+  --yellow: #f4e198;
+  --yellow-border:#eac377;
+  --green: #bece82;
+  --green-border:#8e9d54;
+}
+
+/* 3. Aplicación base rápida */
+body {
+  font-family: var(--font-text);
+  color: var(--dark-green);
+  background-color: var(--back);
+}
+
+h1, h2 {
+  font-family: var(--font);
+  color: var(--color-verde-bosque);
+}
+
+h3, h4, .servicio-destacado {
+  font-family: var(--font-subtitulo);
+  color: var(--color-marron-tierra);
+}
