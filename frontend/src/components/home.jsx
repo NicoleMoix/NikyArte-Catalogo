@@ -8,9 +8,7 @@ import Contact from './partails/contact.jsx';
 function Catalogo (){
     return(
         <>
-        <nav className="section-nav">
             <NavHome/>
-        </nav>
         <main>
             <section id="inicio">
                 <Carousel/>

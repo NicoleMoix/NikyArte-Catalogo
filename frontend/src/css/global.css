@@ -4,7 +4,7 @@
 /* 2. Variables Globales */
 :root {
   /* Jerarquía Tipográfica */
-  --font-title: 'Tinos', serif;        /* Para <h1>, <h2> */
+  --font-tittle: 'Tinos', serif;        /* Para <h1>, <h2> */
   --font-subtittle: 'Quicksand', sans-serif; /* Para <h3>, <h4> o destacados */
   --font-text: 'Nunito', sans-serif;   /* Para <p>, <span>, <a> */
 
@@ -19,6 +19,15 @@
   --green-border:#8e9d54;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden; /* Prohíbe terminantemente el scroll horizontal en toda la página */
+}
 /* 3. Aplicación base rápida */
 body {
   font-family: var(--font-text);
@@ -27,11 +36,11 @@ body {
 }
 
 h1, h2 {
-  font-family: var(--font);
-  color: var(--color-verde-bosque);
+  font-family: var(--font-tittle);
+  color: var(--font);
 }
 
-h3, h4, .servicio-destacado {
-  font-family: var(--font-subtitulo);
-  color: var(--color-marron-tierra);
+h3, h4 {
+  font-family: var(--font-subtittle);
+  color: var(--dark-green);
 }
