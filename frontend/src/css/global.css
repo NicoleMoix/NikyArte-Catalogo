@@ -17,6 +17,10 @@
   --yellow-border:#eac377;
   --green: #bece82;
   --green-border:#8e9d54;
+  --light-orange: #ddb280;
+  --orange: #f6975f;
+  --orange-border: #b8622f;
+  
 }
 
 *, *::before, *::after {
@@ -43,4 +47,7 @@ h1, h2 {
 h3, h4 {
   font-family: var(--font-subtittle);
   color: var(--dark-green);
+}
+a{
+  text-decoration: none;
 }
