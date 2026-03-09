@@ -5,19 +5,18 @@ function NavHome() {
   return (
     <nav className="navbar-container">
 
-      <div className="navbar-left">
-        <Link tp="/">
-          <img src="/img/logo.png" alt="NikyArte amigurumis" className="logo-pc" />
+      <div className="navbar-left"></div>
+      
+      <div className="navbar-center">
+        <Link to="https://www.instagram.com/nikyarte/?hl=es">
+          <img src="/img/nombre.png" alt="NikyArte amigurumis" className="logo-pc" />
+        </Link>
+        <Link to="https://www.instagram.com/nikyarte/?hl=es">
+          <img src="/img/logo.png" alt="NikyArte amigurumis" className="logo-movil" />
         </Link>
       </div>
-      <div className="navbar-center">
-        <HashLink smooth to="/">Inicio</HashLink>
-        <HashLink smooth to="/#catalogo">Catalogo</HashLink>
-        <HashLink smooth to="/#contacto">Contacto</HashLink>
-      </div>
-
       <div className="navbar-right">
-        <i className="ri-search-line"></i>
+        <Link to="https://www.instagram.com/nikyarte/?hl=es" target='_blanck'><i class="ri-instagram-line"></i></Link>
         <div className="menu-toggle">
           <button className="mobile-menu-btn">
             <i className="ri-menu-line"></i>

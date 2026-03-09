@@ -6,28 +6,35 @@
     width: 100%;
     height: 110px;
     padding: 0 5vw;
-    /* Usar 'vw' hace que el padding crezca o se encoja con la pantalla */
-    background-image: url('/img/banner navbar.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: var(--light-orange);
 }
 /* --- columnas --- */
-/* - logo IZQUIERDA */
+/* - vacio IZQUIERDA */
 .navbar-left {
+    display: block;
+}
+/* - logo CENTRO */
+.navbar-center {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 .logo-pc {
-    height: 80px;
+    height: 65px;
     width: auto;
 }
-/* - lupa + menu DERECHA */
+.logo-movil{
+    display: none;
+}
+/* - menu DERECHA */
 .navbar-right {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
 }
-.navbar-right i {
+.navbar-right i,
+.mobile-menu-btn i { 
     font-size: 2rem;
     color: var(--back);
     cursor: pointer;
@@ -36,41 +43,14 @@
 .mobile-menu-btn:hover,
 .mobile-menu-btn:focus,
 .navbar-right i:hover,
-.navbar-right i:focus {filter: drop-shadow(5px 3px 3px #24270c6b); transition: all 0.4s ease;}
+.navbar-right i:focus {filter: drop-shadow(5px 3px 3px #24270c49); transition: all 0.4s ease;}
 /* - navegacion CENTRO*/
-.navbar-center {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: var(--back);
-    border-radius: 50px;
-    padding: 8px 15px;
-}
 
-.navbar-center a {
-    font-family: var(--font-subtittle);
-    font-size: 1.1rem;
-    color: var(--font);
-    text-decoration: none;
-    padding: 10px 30px;
-    border-radius: 50px;
-    transition: all 0.4s ease;
-}
-
-.navbar-center a:hover {
-    background-color: var(--green);
-    color: var(--font);
-}
 
 @media (max-width: 800px) {
     /* - contenedor principal */
     .navbar-container{
-        grid-template-columns: 1fr  1fr;
-    }
-    /* - logo IZQUIERDA */
-    .navbar-left {
-        padding-left: 50px;
-        transition: all 0.4s ease;
+        grid-template-columns: auto 1fr 1fr;
     }
     /* - lupa + menu DERECHA */
     .navbar-right{
@@ -86,7 +66,16 @@
     }
     /* - navegacion (dentro del menu) */
     .navbar-center{
-        display: none !important;
+        justify-content: flex-start;
+    }
+    .logo-pc{
+        display: none;
+    }
+    .logo-movil {
+        display: block;
+        height: 80px;
+        width: auto;
+        padding-left: 20px;
     }
     
 }
