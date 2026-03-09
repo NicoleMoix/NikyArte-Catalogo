@@ -1,6 +1,11 @@
 function Catalog (){
     return(
-        <h1>catalogo</h1>
+        <section className="catalog-section">
+            <div className=""></div>
+            <h1>catalodo</h1>
+
+            </section>
+        
     );
 }
 export default Catalog;
