@@ -20,7 +20,8 @@
   --light-orange: #ddb280;
   --orange: #f6975f;
   --orange-border: #b8622f;
-  --beige: #ece7ce;
+  --beige: #f8f4df;
+  --white: #ffffff;
 }
 
 *, *::before, *::after {
@@ -33,12 +34,11 @@ body {
   overflow-x: hidden; /* Prohíbe terminantemente el scroll horizontal en toda la página */
 }
 /* 3. Aplicación base rápida */
-body {
-  font-family: var(--font-text);
-  color: var(--dark-green);
-  background-color: var(--back);
-}
 
+.font-n span, p{
+  font-family: var(--font-text);
+  color: var(--font);
+}
 h1, h2 {
   font-family: var(--font-tittle);
   color: var(--font);
@@ -49,5 +49,19 @@ h3, h4 {
   color: var(--dark-green);
 }
 a{
+  text-decoration: none;
+}
+.ig-btn{
+  background: transparent;
+  border: none;
+  padding: 10px 10px;
+}
+.ig-btn i, .email-btn i{
+  font-size: 1.5rem;
+  color: var(--font);
+}
+.email-btn{
+  background: transparent;
+  border: none;
   text-decoration: none;
 }

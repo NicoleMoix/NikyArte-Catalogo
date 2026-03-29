@@ -13,7 +13,7 @@ function Catalogo (){
             {/*<section id="inicio">
                 <Carousel/>
             </section>*/}
-            <section id="catalogo">
+            <section id="catalogo" className='font-n'>
                 <Catalog/>
             </section>
             {/*<section id="contacto">
