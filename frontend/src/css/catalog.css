@@ -1,15 +1,280 @@
-
-.catalog-section{
+.catalog-section {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 5vw;
-    /* Usar 'vw' hace que el padding crezca o se encoja con la pantalla */
+    z-index: 1;
+}
+
+.catalog-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('/img/fondo-catalogo.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.5;
+    z-index: -1;
+}
+
+/* --- CONTENEDOR PRINCIPAL DE LA TARJETA --- */
+.folder-card {
+    display: flex;
+    align-items: flex-start;
+    height: 340px;
+    margin-bottom: 20px;
+}
+/* - card inferior de la imagen */
+.tittle-card{
+    font-family: var(--font-tittle);
+    font-size: 1.3rem;
+    color: var(--font);
+    margin: 0 0 10px 0; /* Margen solo abajo para separarlo de la foto */
+    text-align: center;
+    width: 100%;
+}
+.subtittle-card{
+    font-size: 0.9rem;
+    color: var(--font);
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+}
+.folder-front {
+    position: relative;
+    width: 280px;
+    height: 100%;
+    background: var(--beige);
+    border-radius: 10px 0 0 10px;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: 0 0 22px rgba(75, 47, 5, 0.281);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* El marco y la foto adentro */
+.folder-image-wrapper {
+    position: relative;
+    width: 220px;
+    flex: 1; /* Le dice: "Toma todo el alto que dejó libre el título" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+.folder-image-wrapper .main-image {
+    width: 90%;
+    height: auto;
+    z-index: 1;
+}
+.folder-image-wrapper .frame-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* --- LAS SOLAPAS --- */
+.folder-tabs {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab {
+    flex: 1;
+    background-color: var(--beige);
+    box-shadow: 20px 0 15px rgba(75, 47, 5, 0.11);
+    writing-mode: vertical-rl; /* texto verticalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-text);
+    font-size: 1.1rem;
+    color: var(--font);
+    transition: all 0.5s ease;
+    border-left: 1px solid #8e9d5452;
+}
+/* Formas redondeadas específicas de las solapas */
+.top-tab {
+    border-radius: 0 15px 15px 0;
+}
+.bottom-tab {
+    border-radius: 0 15px 15px 0;
+}
+.tab:hover {
+    background-color: #d2e09f;
+}
+/* - solapa activa */
+.tab.oculta {
+    opacity: 0;
+    visibility: hidden;
+}
+/* --- PANEL DESPLEGABLE DERECHO --- */
+.folder-content {
+    height: 100%;
+    width: 0;
+    background-color: #f1ebca;
+    border: 1px solid #8e9d5428;
+    border-radius: 0 15px 15px 0;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+.folder-content.abierto {
+    width: 500px; /* El ancho que tomará al abrirse */
+}
+/* Contenedor interno para solapas + texto */
+.folder-content-inner {
+    width: 450px; /* Reduje un poco para que entre bien en pantallas medianas */
+    padding-top: 20px;
+    padding-left: 60px; /* Espacio para que el doblez no tape el texto */
+    box-sizing: border-box;
+}
+/* bloque del texto */
+.info-view {
+    text-align: justify;
+}
+.info-view h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(37, 9, 7, 0.2);
+    padding-bottom: 10px;
+}
+
+.info-view p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+/* --- MAGIA DE LA GALERÍA APILADA --- */
+.stack-gallery {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stack-item {
+    position: absolute;
+    width: 180px; 
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--back); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+/* --- LAS IMÁGENES DENTRO DEL ITEM --- */
+.gallery-main-img {
+    width: 85%; /* Reducimos para que entre justo dentro del dorado del marco */
+    height: 100%;
+    object-fit: cover; /* Recorta la foto si es muy ancha, manteniendo el relleno */
+    z-index: 1;
+    padding-bottom: 10px; /* Ajuste visual según la forma de tu marco */
+}
+
+.gallery-frame-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Foto principal (al frente) */
+.stack-item.activa {
+    z-index: 3;
+    transform: rotate(0deg) translate(0, 0) scale(1);
+    opacity: 1;
+}
+
+.stack-item.siguiente {
+    z-index: 2;
+    transform: rotate(8deg) translate(25px, 10px) scale(0.95);
+    opacity: 0.8;
+}
+
+.stack-item.tercera {
+    z-index: 1;
+    transform: rotate(-6deg) translate(-25px, 15px) scale(0.9);
+    opacity: 0.5;
+}
+
+.stack-item.oculta {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.5);
+}
+/* --- CONTROLES DE LA GALERÍA --- */
+.div-container-view{
+    display: flex;
+    flex-direction: row;
+}
+.gallery-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.gallery-controls button {
+    background-color: transparent;
+    border: 2px solid var(--font);
+    color: var(--font);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-controls button:hover {
+    background-color: var(--green);
+    color: var(--dark-green);
+}
+/* seccion botones */
+.div-btn {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.ig-btn, .email-btn, .card-btn {
+    background-color: var(--green);
+    color: var(--font);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-subtittle);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.ig-btn:hover, .email-btn:hover, .card-btn:hover {
+    background-color: var(--green-border);
+    transform: translateY(-2px);
 }
